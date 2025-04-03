@@ -12,19 +12,18 @@
             <th>Actions</th>
         </tr>
     </thead>
-    <?php var_dump($clients); ?>
     <tbody>
         <?php foreach($clients as $client): ?>
 
             <tr>
 
                 <td><?= $client->getId(); ?></td>
-                <td><a href="?action=view&id=<?= $client->getId() ?>"><?= $client->getNom(); ?></a></td>
+                <td><a href="?action=client-view&id=<?= $client->getId() ?>"><?= $client->getNom(); ?></a></td>
                 <td><?= $client->getEmail(); ?></td>
                 <td><?= $client->getTelephone(); ?></td>
                 <td>
-                    <a href="?action=view&id=<?= $client->getId() ?>" class="btn btn-primary btn-sm">👁‍🗨</a>
-                    <a href="?action=edit&id=<?= $client->getId() ?>" class="btn btn-warning btn-sm">✏️</a>
+                    <a href="?action=client-view&id=<?= $client->getId() ?>" class="btn btn-primary btn-sm">👁‍🗨</a>
+                    <a href="?action=client-edit&id=<?= $client->getId() ?>" class="btn btn-warning btn-sm">✏️</a>
                     <a onclick="return confirm('Are you sure ?');" href="?action=delete&id=<?= $client->getId() ?>" class="btn btn-dark btn-sm">❌</a>
                 </td>
 

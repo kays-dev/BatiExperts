@@ -5,29 +5,29 @@ require_once __DIR__ . '/controllers/ClientController.php';
 $clientControl = new ClientController();
 // $orderRepo = new OrderRepository();
 
-$action = $_GET['action'] ?? 'index';
+$action = $_GET['action'] ?? 'client-index';
 $id = $_GET['id'] ?? null;
 
 switch ($action){
-    case 'view':
+    case 'client-view':
         $clientControl->show($id);
         break;
-    case 'create':
+    case 'client-create':
         $clientControl->create();
         break;
-    case 'index':
+    case 'client-index':
         $clientControl->clientList();
         break;
-    case 'store':
+    case 'client-store':
         $clientControl->store();
         break;
-    case 'edit':
+    case 'client-edit':
         $clientControl->edit($id);
         break;
-    case 'update':
+    case 'client-update':
         $clientControl->update();
         break;
-    case 'delete':
+    case 'client-delete':
         $clientControl->delete($id);
         break;
     default:

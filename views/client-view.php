@@ -6,7 +6,7 @@
 <p><strong>Adresse mail : </strong> <?= $client->getEmail() ?></p>
 <p><strong>Numéro de téléphone : </strong> <?= $client->getTelephone() ?></p>
 
-<a href="?action=edit&id=<?= $client->getId() ?>" class="btn btn-warning">✏️ Modifier les informations du client</a>
+<a href="?action=client-edit&id=<?= $client->getId() ?>" class="btn btn-warning">✏️ Modifier les informations du client</a>
 <a href="?" class="btn btn-secondary">🔙 Retour à la liste des clients</a>
 
 <?php require_once __DIR__ . '/templates/footer.php'; 

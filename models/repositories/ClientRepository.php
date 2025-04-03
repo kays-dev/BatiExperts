@@ -34,18 +34,16 @@ class ClientRepository
             ->getConnected()
             ->prepare('SELECT * FROM clients;');
         $statement->execute();
-        $statement->fetchAll();
-        var_dump($statement);
+        $results = $statement->fetchAll();
 
         $clients = [];
-        foreach ($statement as $row) {
+        foreach ($results as $row) {
             $client = new Client();
             $client->setId($row['id']);
-            $client->setNom($row['nom']);
+            $client->setNom($row['name']);
             $client->setEmail($row['email']);
             $client->setTelephone($row['telephone']);
 
-            var_dump($row);
             $clients[] = $client;
         }
         // var_dump($clients);
@@ -67,7 +65,7 @@ class ClientRepository
 
         $client = new Client();
         $client->setId($result['id']);
-        $client->setNom($result['nom']);
+        $client->setNom($result['name']);
         $client->setEmail($result['email']);
         $client->setTelephone($result['telephone']);
 
@@ -79,7 +77,7 @@ class ClientRepository
 
         $statement = $this->connection
             ->getConnected()
-            ->prepare("UPDATE clients SET nom = :nom, email = :email, telephone = :telephone WHERE id = :id");
+            ->prepare("UPDATE clients SET name = :nom, email = :email, telephone = :telephone WHERE id = :id");
 
         return $statement->execute([
             'nom' => $client->getNom(),

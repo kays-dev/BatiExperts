@@ -2,7 +2,7 @@
 
 <h2 class="mb-4">➕ Créer une nouvelle tâche</h2>
 
-<form action="?action=store" method="POST">
+<form action="?action=client-store" method="POST">
     <div class="mb-3">
         <label for="name" class="form-label">Nom :</label>
         <input type="text" class="form-control" id="name" name="name" required>

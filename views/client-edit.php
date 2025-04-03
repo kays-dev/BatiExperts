@@ -2,7 +2,7 @@
 
 <h2 class="mb-4">✏️ Modifier les informations du client</h2>
 
-<form action="?action=update" method="POST">
+<form action="?action=client-update" method="POST">
     <input type="hidden" name="id" value="<?= $client->getId() ?>">
 
     <div class="mb-3">
