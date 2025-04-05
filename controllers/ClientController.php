@@ -12,14 +12,15 @@ class ClientController
         $this->clientRepository = new ClientRepository();
     }
 
-    // public function home()
-    // {
+    public function home()
+    {
 
-    //     $client = $this->clientRepository->viewClient();
+        $client = $this->clientRepository->viewClients();
 
-    //     require_once __DIR__ . '/../views/home.php';
+        require_once __DIR__ . '/../views/home.php';
 
-    // }
+    }
+
     public function clientList()
     {
 
@@ -71,8 +72,8 @@ class ClientController
         $client = new Client();
         $client->setId($_POST['id']);
         $client->setNom($_POST['name']);
-        $client->setEmail($_POST['mail']);
-        $client->setTelephone($_POST['telephone']);
+        $client->setEmail($_POST['email']);
+        $client->setTelephone($_POST['phone']);
 
         $this->clientRepository->updateClient($client);
 

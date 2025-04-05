@@ -1,32 +1,34 @@
 <?php require_once __DIR__ . '/templates/header.php'; ?>
         
-<h2 class="mb-4">👤 Liste des clients</h2>
+<div class="container-fluid mb-5 bg-info pt-4 pb-2">
+    <h2 class="mb-4 text-dark">👤 Liste des clients</h2>
+</div>
 
-<table class="table table-striped table-bordered">
-    <thead class="table-dark">
+<table class="table table-striped">
+    <thead class="table-info">
         <tr>
-            <th>ID</th>
-            <th>Nom</th>
-            <th>Email</th>
-            <th>Téléphone</th>
-            <th>Actions</th>
+            <th scope="col">ID</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Email</th>
+            <th scope="col">Téléphone</th>
+            <th scope="col">Actions</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody class="table-group-divider">
         <?php foreach($clients as $client): ?>
 
             <tr>
-
-                <td><?= $client->getId(); ?></td>
+                <th scope="row"><?= $client->getId(); ?></th>
                 <td><a href="?action=client-view&id=<?= $client->getId() ?>"><?= $client->getNom(); ?></a></td>
                 <td><?= $client->getEmail(); ?></td>
                 <td><?= $client->getTelephone(); ?></td>
                 <td>
-                    <a href="?action=client-view&id=<?= $client->getId() ?>" class="btn btn-primary btn-sm">👁‍🗨</a>
-                    <a href="?action=client-edit&id=<?= $client->getId() ?>" class="btn btn-warning btn-sm">✏️</a>
-                    <a onclick="return confirm('Are you sure ?');" href="?action=delete&id=<?= $client->getId() ?>" class="btn btn-dark btn-sm">❌</a>
+                    <div class="btn-group btn-group-sm">
+                        <a href="?action=client-view&id=<?= $client->getId() ?>" class="btn btn-light">👁‍🗨</a>
+                        <a href="?action=client-edit&id=<?= $client->getId() ?>" class="btn btn-warning">✏️</a>
+                        <a onclick="return confirm('Are you sure ?');" href="?action=client-delete&id=<?= $client->getId() ?>" class="btn btn-danger">✖</a>
+                    </div>
                 </td>
-
             </tr>
 
         <?php endforeach; ?>

@@ -1,9 +1,10 @@
 <?php
 
+require_once __DIR__ . '/../models/repositories/OrderRepository.php';
+
 class OrderController
 {
     private OrderRepository $orderRepository;
-
 
     public function __construct()
     {
@@ -12,14 +13,14 @@ class OrderController
 
     public function orderListAll()
     {
-        $order = $this->orderRepository->getOrders();
+        $orders = $this->orderRepository->getOrders();
 
         require_once __DIR__ . '/../views/order-list.php';
     }
 
     public function orderListOne(int $id)
     {
-        $order = $this->orderRepository->getOrder();
+        $order = $this->orderRepository->getOrder($id);
 
         require_once __DIR__ . '/../views/order-view.php';
     }
@@ -70,10 +71,5 @@ class OrderController
         require_once __DIR__ . '/../views/404.php';
         http_response_code(404);
     }
-
-
-
-
-
 
 }

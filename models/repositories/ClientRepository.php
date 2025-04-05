@@ -78,9 +78,9 @@ class ClientRepository
         $statement = $this->connection
             ->getConnected()
             ->prepare("UPDATE clients SET name = :nom, email = :email, telephone = :telephone WHERE id = :id");
-
+        
         return $statement->execute([
-            'nom' => $client->getNom(),
+            'name' => $client->getNom(),
             'email' => $client->getEmail(),
             'telephone' => $client->getTelephone(),
         ]);
@@ -91,10 +91,9 @@ class ClientRepository
 
         $statement = $this->connection
             ->getConnected()
-            ->prepare("DELETE FROM clients WHERE id=$id");
+            ->prepare("DELETE FROM clients WHERE id=:id");
+        $statement ->bindParam(':id',$id);
 
-        return $statement->execute([
-            'id' => $id
-        ]);
+        return $statement->execute();
     }
 }

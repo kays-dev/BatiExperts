@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . '/../Order.php';
+
 //CRUD (ajouter/voir/modifier/supprimer)
 
 class OrderRepository
@@ -13,13 +15,16 @@ class OrderRepository
 
     public function getOrders(): array
     {
-        $statement = $this->connection->getConnected()->prepare('SELECT * FROM orders');
+        $statement = $this->connection
+        ->getConnected()
+        ->prepare("SELECT * FROM orders;");
         $statement->execute();
         $result = $statement->fetchAll();
+
         $orders = [];
         foreach ($result as $row) {
             $order = new Order();
-            $order->setID($row['id']);
+            $order->setId($row['id']);
             $order->setStatus($row['status']);
             $order->setTitle($row['title']);
 
@@ -32,17 +37,17 @@ class OrderRepository
 
     public function getOrder(int $id): ?Order
     {
-        $statement = $this->connection->getConnected()->prepare('SELECT * FROM orders WHERE id=$id');
+        $statement = $this->connection->getConnected()->prepare("SELECT * FROM orders WHERE id=$id");
         $statement->execute();
-        $result = $statement->execute()->fetch();
+        $result = $statement->fetch();
 
         if (!$result) {
             return null;
         }
         $order = new Order();
-        $order->setId(['id']);
-        $order->setStatus(['status']);
-        $order->setTitle(['title']);
+        $order->setId($result['id']);
+        $order->setStatus($result['status']);
+        $order->setTitle($result['title']);
 
         return $order;
     }

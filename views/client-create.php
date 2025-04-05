@@ -1,26 +1,28 @@
 <?php require_once __DIR__ . '/templates/header.php'; ?>
 
-<h2 class="mb-4">➕ Créer une nouvelle tâche</h2>
+<div class="container-fluid mb-5 bg-info pt-4 pb-4">
+    <h2 class="mb-2 text-dark">➕ Créer un nouveau client</h2>
+</div>
 
-<form action="?action=client-store" method="POST">
+<form action="?action=client-update" method="POST">
+
     <div class="mb-3">
-        <label for="name" class="form-label">Nom :</label>
-        <input type="text" class="form-control" id="name" name="name" required>
+        <label for="name" class="form-label text-body-emphasis">Nom :</label>
+        <input type="text" class="form-control border border-info-subtle bg-light-subtle" id="name" name="name" required>
     </div>
 
     <div class="mb-3">
-        <label for="email" class="form-label">Adresse mail :</label>
-        <textarea class="form-control" id="email" name="email" rows="3" required></textarea>
+        <label for="email" class="form-label text-body-emphasis">Adresse mail :</label>
+        <input type="text" class="form-control border-info-subtle bg-light-subtle" id="email" name="email" required>
     </div>
 
-    <div class="mb-3">
-        <label for="phone" class="form-label">Numéro de téléphone :</label>
-        <textarea class="form-control" id="phone" name="phone" rows="3" required></textarea>
+    <div class="mb-5">
+        <label for="phone" class="form-label text-body-emphasis">Numéro de téléphone :</label>
+        <input type="text" class="form-control border-info-subtle bg-light-subtle" id="phone" name="phone" required>
     </div>
 
-    <button type="submit" class="btn btn-primary">Ajouter</button>
+    <button type="submit" class="btn btn-info mb-3">Ajouter</button>
+    <a href="?action=client-index" class="btn btn-light mb-3">🔙 Retour à la liste des clients</a>
 </form>
 
-<a href="?" class="btn btn-secondary">🔙 Retour à la liste des clients</a>
-
-<?php require_once __DIR__ . '/templates/footer.php'; 
+<?php require_once __DIR__ . '/templates/footer.php';

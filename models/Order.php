@@ -7,15 +7,15 @@ class Order {
     private string $title;
 
     public function getId(){
-        $this->id;
+        return $this->id;
     }
 
     public function getStatus(){
-        $this->status;
+        return $this->status;
     }
 
     public function getTitle(){
-        $this->title;
+        return $this->title;
     }
 
     public function setId(int $id){
